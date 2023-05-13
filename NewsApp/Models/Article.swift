@@ -10,6 +10,7 @@ import Foundation
 struct Article: Decodable {
     let title: String?
     let byline: String?
+    let abstract: String?
     let multimedia: [Multimedia]?
 }
 

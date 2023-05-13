@@ -12,6 +12,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var articles = [Article]()
+    var selectedArticle: Article?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,19 @@ class ListViewController: UIViewController {
         task.resume()
     }
     
+    
+    func goDetail(news: Article) {
+        selectedArticle = news
+        performSegue(withIdentifier: "toDetailPage", sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "toDetailPage" {
+               let detailVC = segue.destination as! DetailViewController
+               detailVC.selectednews = selectedArticle
+           }
+       }
+    
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -75,8 +89,9 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configureCell(model: articles[indexPath.row])
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        goDetail(news: articles[indexPath.row])
     }
 }
 
