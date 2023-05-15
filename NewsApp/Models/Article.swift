@@ -11,6 +11,7 @@ struct Article: Decodable {
     let title: String?
     let byline: String?
     let abstract: String?
+    let url: URL?
     let multimedia: [Multimedia]?
 }
 

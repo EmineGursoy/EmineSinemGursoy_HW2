@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: UIViewController {
 
@@ -13,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var seeMoreButton: UIButton!
     
     var selectednews: Article?
     
@@ -27,9 +29,18 @@ class DetailViewController: UIViewController {
         descriptionLabel.text = selectednews?.abstract
         downloadImage(model: selectednews!)
         
+        seeMoreButton.addTarget(self, action: #selector(openNews), for: .touchUpInside)
+        
         
         // Do any additional setup after loading the view.
     }
+    
+    @objc func openNews() {
+        guard let url = selectednews?.url else { return }
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true, completion: nil)
+    }
+    
     private func downloadImage(model: Article) {
         
         guard let imageURL = model.multimedia?.first?.url else {
