@@ -31,6 +31,8 @@ class DetailViewController: UIViewController {
         
         seeMoreButton.addTarget(self, action: #selector(openNews), for: .touchUpInside)
         
+        seeMoreButton.layer.cornerRadius = 20
+        //seeMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .bold)
         
         // Do any additional setup after loading the view.
     }
@@ -38,6 +40,7 @@ class DetailViewController: UIViewController {
     @objc func openNews() {
         guard let url = selectednews?.url else { return }
         let safariViewController = SFSafariViewController(url: url)
+        safariViewController.preferredControlTintColor = .black
         present(safariViewController, animated: true, completion: nil)
     }
     

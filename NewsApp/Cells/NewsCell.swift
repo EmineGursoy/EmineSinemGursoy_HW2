@@ -26,7 +26,12 @@ class NewsCell: UITableViewCell {
     func configureCell(model: Article) {
         titleLabel.text = model.title
         authorLabel.text = model.byline
+        authorLabel.alpha = 0.8
         downloadImage(model: model)
+        newsImageView.layer.borderWidth = 2
+        newsImageView.layer.borderColor = UIColor.black.cgColor
+        newsImageView.layer.cornerRadius = 10
+
     }
     
     private func downloadImage(model: Article) {
