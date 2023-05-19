@@ -5,6 +5,8 @@
 //  Created by Emine Sinem on 11.05.2023.
 //
 
+
+import NewsAPI
 import UIKit
 
 class ListViewController: UIViewController {
@@ -17,6 +19,8 @@ class ListViewController: UIViewController {
     
     let pickerViewContainer = UIStackView()
     let picker = UIPickerView()
+    
+    let apiManager = APIManager()
     
     var selectedSectionIndex: Int?
     
@@ -31,7 +35,6 @@ class ListViewController: UIViewController {
         
         selectedSection = sections[7]
        
-        //makeClickable()
         getData()
     }
     
@@ -69,19 +72,6 @@ class ListViewController: UIViewController {
         navigationItem.title = sections[7].uppercased()
     }
     
-    // Makes the navigation item clickable and sets the text that will be written on the navigation item
-    /*
-    func makeClickable() {
-        let button =  UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-        button.backgroundColor = .black
-        button.setTitle(selectedSection.uppercased(), for: .normal)
-        button.addTarget(self, action: #selector(clickOnButton), for: .touchUpInside)
-        button.layer.borderWidth = 4
-        button.layer.borderColor = UIColor.gray.cgColor
-        navigationItem.titleView = button
-    }
-    */
     // Shows pickerview for topics
     @objc func clickOnButton() {
         pickerViewContainer.isHidden = false
@@ -115,7 +105,6 @@ class ListViewController: UIViewController {
             changeSection(to: selectedSectionIndex)
         }
         
-        //makeClickable()
         pickerViewContainer.isHidden = true
         navigationItem.title = selectedSection.uppercased()
         self.view.endEditing(true)
@@ -131,38 +120,16 @@ class ListViewController: UIViewController {
     
     // News data on the selected section is retrieved
     func getData() {
-        
-        let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/\(selectedSection).json?api-key=ws8eBdyNMkVjdEk8GlkA2m7hQLSA5l86")
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!) { data, response, error in
+        apiManager.getData(section: selectedSection) { articles, error in
             if error != nil {
                 self.makeAlert(titleInput: "Error", messageInput: "News data couldn't be retrieved")
             } else {
-                
-                if let data = data {
-                    do {
-                        let articleResponse = try JSONDecoder().decode(ArticleResponse.self, from: data)
-                        
-                        // Filter articles without data
-                        self.articles = articleResponse.results.filter {
-                            guard let title = $0.title,
-                                  let abstract = $0.abstract else {
-                                return false
-                            }
-                            
-                            return title.count > 0 && abstract.count > 0
-                        }
-                        
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    } catch {
-                        print("Error: \(error)")
-                    }
+                DispatchQueue.main.async {
+                    self.articles = articles
+                    self.tableView.reloadData()
                 }
             }
         }
-        task.resume()
     }
    
     // Detail page of the selected news is opened
@@ -204,47 +171,6 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
-    }
-}
-
-// The response object from the API is modeled
-private struct ArticleResponse: Decodable {
-    let results: [Article]
-    
-    enum CodingKeys: CodingKey {
-        case results
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let throwables = try container.decode([Throwable<Article>].self, forKey: .results)
-        self.results = throwables.compactMap { $0.value }
-    }
-}
-
-enum Throwable<T: Decodable>: Decodable {
-    case success(T)
-    case failure(Error)
-
-    init(from decoder: Decoder) throws {
-        do {
-            let decoded = try T(from: decoder)
-            self = .success(decoded)
-        } catch let error {
-            self = .failure(error)
-        }
-    }
-}
-
-extension Throwable {
-    var value: T? {
-        switch self {
-        case .failure(_):
-            return nil
-        case .success(let value):
-            return value
-        }
     }
 }
 

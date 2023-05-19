@@ -5,6 +5,7 @@
 //  Created by Emine Sinem on 13.05.2023.
 //
 
+import NewsAPI
 import UIKit
 import SafariServices
 
@@ -21,9 +22,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail"
-        //guard let selectedNewsTitle = selectednews?.title else { return }
-        //print(selectedNewsTitle)
-        
         configureDetailPage()
     }
     
@@ -46,7 +44,6 @@ class DetailViewController: UIViewController {
         if selectednews?.abstract == "" {
             descriptionLabel.text = "No Data"
         }
-        
     }
     
     func makeAlert(titleInput: String, messageInput: String) {

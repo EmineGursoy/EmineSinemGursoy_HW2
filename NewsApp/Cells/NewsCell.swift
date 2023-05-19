@@ -5,6 +5,7 @@
 //  Created by Emine Sinem on 12.05.2023.
 //
 
+import NewsAPI
 import UIKit
 
 class NewsCell: UITableViewCell {

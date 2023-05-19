@@ -9,21 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="YLX-Xk-8NX">
-            <objects>
-                <tabBarController id="b2V-id-Gqj" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EEI-k7-TJl">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j3y-qT-gRo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1303" y="4"/>
-        </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -164,37 +149,6 @@
             </objects>
             <point key="canvasLocation" x="1592" y="4"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="9L3-DI-Y1F">
-            <objects>
-                <viewController id="4X3-xY-9Nj" customClass="FavoritesViewController" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="w5q-1H-zzp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4YL-DE-Od9">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="owM-dV-vSh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="owM-dV-vSh" firstAttribute="bottom" secondItem="4YL-DE-Od9" secondAttribute="bottom" id="3WB-5n-QJq"/>
-                            <constraint firstItem="4YL-DE-Od9" firstAttribute="top" secondItem="owM-dV-vSh" secondAttribute="top" id="5xz-v5-1uz"/>
-                            <constraint firstItem="owM-dV-vSh" firstAttribute="trailing" secondItem="4YL-DE-Od9" secondAttribute="trailing" id="JPg-ZC-xF9"/>
-                            <constraint firstItem="4YL-DE-Od9" firstAttribute="leading" secondItem="owM-dV-vSh" secondAttribute="leading" id="jQt-MQ-hAi"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="5ys-RH-Wdx"/>
-                    <connections>
-                        <outlet property="favoritesTableView" destination="4YL-DE-Od9" id="XAP-xG-z1a"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lmX-Eg-IpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1303" y="803"/>
-        </scene>
         <!--News-->
         <scene sceneID="Fdz-Uz-7Ti">
             <objects>
@@ -219,7 +173,6 @@
     <resources>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
