@@ -31,22 +31,13 @@ class ListViewController: UIViewController {
         
         selectedSection = sections[7]
        
-        makeClickable()
+        //makeClickable()
         getData()
-        makeLeftBarItem()
-    
     }
     
-    func makeLeftBarItem() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            //barButtonSystemItem: .list.bullet.rectangle,
-            image: UIImage(systemName: "list.bullet.rectangle"),
-            style: .done,
-            target: self,
-            action: nil
-        )
-        }
-    
+    @IBAction func rightBarButtonAction(_ sender: Any) {
+        clickOnButton()
+    }
     
     func configurePickerView() {
         picker.delegate = self
@@ -75,9 +66,11 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "newsCell")
+        navigationItem.title = sections[7].uppercased()
     }
     
     // Makes the navigation item clickable and sets the text that will be written on the navigation item
+    /*
     func makeClickable() {
         let button =  UIButton(type: .custom)
         button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
@@ -88,7 +81,7 @@ class ListViewController: UIViewController {
         button.layer.borderColor = UIColor.gray.cgColor
         navigationItem.titleView = button
     }
-    
+    */
     // Shows pickerview for topics
     @objc func clickOnButton() {
         pickerViewContainer.isHidden = false
@@ -122,8 +115,9 @@ class ListViewController: UIViewController {
             changeSection(to: selectedSectionIndex)
         }
         
-        makeClickable()
+        //makeClickable()
         pickerViewContainer.isHidden = true
+        navigationItem.title = selectedSection.uppercased()
         self.view.endEditing(true)
     }
     
@@ -148,7 +142,16 @@ class ListViewController: UIViewController {
                 if let data = data {
                     do {
                         let articleResponse = try JSONDecoder().decode(ArticleResponse.self, from: data)
-                        self.articles = articleResponse.results
+                        
+                        // Filter articles without data
+                        self.articles = articleResponse.results.filter {
+                            guard let title = $0.title,
+                                  let abstract = $0.abstract else {
+                                return false
+                            }
+                            
+                            return title.count > 0 && abstract.count > 0
+                        }
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()

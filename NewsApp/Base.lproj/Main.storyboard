@@ -47,7 +47,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ivD-57-qOX"/>
-                    <navigationItem key="navigationItem" id="1LC-zN-s1F"/>
+                    <navigationItem key="navigationItem" id="1LC-zN-s1F">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="list.bullet.rectangle" catalog="system" id="BsS-dd-adU">
+                            <connections>
+                                <action selector="rightBarButtonAction:" destination="BYZ-38-t0r" id="w7Z-uC-Red"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Pw8-TN-99H" id="AJ0-on-bqD"/>
                         <segue destination="3xs-XH-49g" kind="show" identifier="toDetailPage" id="BP5-aw-UdP"/>
@@ -78,7 +84,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNx-9Z-DfJ">
-                                        <rect key="frame" x="80" y="610" width="233" height="50"/>
+                                        <rect key="frame" x="80" y="486.33333333333337" width="233" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="NCL-zV-z1W"/>
@@ -90,10 +96,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vz7-Cv-kOK">
-                                        <rect key="frame" x="30" y="390" width="333" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="vjB-Es-djC"/>
-                                        </constraints>
+                                        <rect key="frame" x="30" y="390" width="333" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -106,10 +109,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGH-ts-xP4">
-                                        <rect key="frame" x="30" y="510" width="333" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="qMm-KP-w2G"/>
-                                        </constraints>
+                                        <rect key="frame" x="30" y="429.33333333333337" width="333" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                     <constraint firstItem="LUp-3f-z0u" firstAttribute="centerX" secondItem="WX2-ZH-ZUZ" secondAttribute="centerX" id="1Jy-mo-1tA"/>
                                     <constraint firstItem="lGH-ts-xP4" firstAttribute="leading" secondItem="WX2-ZH-ZUZ" secondAttribute="leading" constant="30" id="1kd-SU-Mku"/>
                                     <constraint firstItem="lGH-ts-xP4" firstAttribute="top" secondItem="vz7-Cv-kOK" secondAttribute="bottom" constant="20" id="554-TA-jHT"/>
-                                    <constraint firstItem="dNx-9Z-DfJ" firstAttribute="top" secondItem="lGH-ts-xP4" secondAttribute="bottom" constant="70" id="6C0-3f-weA"/>
+                                    <constraint firstItem="dNx-9Z-DfJ" firstAttribute="top" secondItem="lGH-ts-xP4" secondAttribute="bottom" constant="40" id="6C0-3f-weA"/>
                                     <constraint firstItem="dNx-9Z-DfJ" firstAttribute="centerX" secondItem="WX2-ZH-ZUZ" secondAttribute="centerX" id="BfP-en-goJ"/>
                                     <constraint firstAttribute="trailing" secondItem="dNx-9Z-DfJ" secondAttribute="trailing" constant="80" id="Hu9-Ru-K5e"/>
                                     <constraint firstAttribute="trailing" secondItem="QzN-zM-9EK" secondAttribute="trailing" id="Nww-zV-b12"/>
@@ -217,6 +217,7 @@
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
