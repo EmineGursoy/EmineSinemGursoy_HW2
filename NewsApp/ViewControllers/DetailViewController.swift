@@ -21,29 +21,57 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Detail"
-
-        guard let selectedNewsTitle = selectednews?.title else {return}
-        print(selectedNewsTitle)
+        //guard let selectedNewsTitle = selectednews?.title else { return }
+        //print(selectedNewsTitle)
+        
+        configureDetailPage()
+    }
+    
+    // Detail page is configured with the data of the selected news
+    func configureDetailPage() {
         authorLabel.text = selectednews?.byline
         titleLabel.text = selectednews?.title
         descriptionLabel.text = selectednews?.abstract
         downloadImage(model: selectednews!)
+        seeMoreButton.layer.cornerRadius = 20
         
         seeMoreButton.addTarget(self, action: #selector(openNews), for: .touchUpInside)
         
-        seeMoreButton.layer.cornerRadius = 20
-        //seeMoreButton.titleLabel?.font = UIFont.systemFont(ofSize: 22.0, weight: .bold)
+        if selectednews?.byline == "" {
+            authorLabel.text = "No Data"
+        }
+        if selectednews?.title == "" {
+            titleLabel.text = "No Data"
+        }
+        if selectednews?.abstract == "" {
+            descriptionLabel.text = "No Data"
+        }
         
-        // Do any additional setup after loading the view.
     }
     
+    func makeAlert(titleInput: String, messageInput: String) {
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // News article is opened on safari
     @objc func openNews() {
         guard let url = selectednews?.url else { return }
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.preferredControlTintColor = .black
-        present(safariViewController, animated: true, completion: nil)
+        
+        let index = url.absoluteString.index(of: ":") ?? url.absoluteString.endIndex
+        let result = url.absoluteString[..<index]
+        if result == "https" || result == "http" {
+            let safariViewController = SFSafariViewController(url: url)
+            safariViewController.preferredControlTintColor = .black
+            present(safariViewController, animated: true, completion: nil)
+            
+        } else {
+            makeAlert(titleInput: "Error", messageInput: "News data couldn't found")
+        }
     }
-    
+
     private func downloadImage(model: Article) {
         
         guard let imageURL = model.multimedia?.first?.url else {
@@ -67,14 +95,5 @@ class DetailViewController: UIViewController {
         }
         task.resume()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

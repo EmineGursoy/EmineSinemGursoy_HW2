@@ -1,45 +1,42 @@
 //
-//  NewsCell.swift
+//  FavoriteCell.swift
 //  NewsApp
 //
-//  Created by Emine Sinem on 12.05.2023.
+//  Created by Emine Sinem on 16.05.2023.
 //
 
 import UIKit
 
-class NewsCell: UITableViewCell {
-    
+class FavoriteCell: UITableViewCell {
+
     @IBOutlet weak var newsImageView: UIImageView!
+    
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var sectionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
     
-    // Configures news cell
     func configureCell(model: Article) {
         titleLabel.text = model.title
-        authorLabel.text = model.byline
-        authorLabel.alpha = 0.8
+        descriptionLabel.text = model.byline
         downloadImage(model: model)
         newsImageView.layer.borderWidth = 2
         newsImageView.layer.borderColor = UIColor.black.cgColor
         newsImageView.layer.cornerRadius = 10
-        
-        if model.title == "" {
-            titleLabel.text = "No Data"
-        }
-        if model.byline == "" {
-            authorLabel.text = "No Data"
-        }
-        
+       // starImageView.isHidden = true
+
     }
     
     private func downloadImage(model: Article) {
@@ -65,4 +62,5 @@ class NewsCell: UITableViewCell {
         }
         task.resume()
     }
+   
 }

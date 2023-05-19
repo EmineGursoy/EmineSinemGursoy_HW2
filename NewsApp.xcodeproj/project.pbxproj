@@ -17,6 +17,9 @@
 		63ED17C22A0D9939001DC422 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED17C02A0D9939001DC422 /* NewsCell.swift */; };
 		63ED17C32A0D9939001DC422 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ED17C12A0D9939001DC422 /* NewsCell.xib */; };
 		63ED17C62A0EE45C001DC422 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED17C52A0EE45C001DC422 /* DetailViewController.swift */; };
+		63ED17E32A13FF7B001DC422 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED17E22A13FF7B001DC422 /* FavoritesViewController.swift */; };
+		63ED17E62A140131001DC422 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED17E42A140131001DC422 /* FavoriteCell.swift */; };
+		63ED17E72A140131001DC422 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63ED17E52A140131001DC422 /* FavoriteCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		63ED17C02A0D9939001DC422 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		63ED17C12A0D9939001DC422 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		63ED17C52A0EE45C001DC422 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		63ED17E22A13FF7B001DC422 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		63ED17E42A140131001DC422 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		63ED17E52A140131001DC422 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +70,11 @@
 		63ED17A72A0D6E7F001DC422 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				63ED17E12A13FC8D001DC422 /* ViewControllers */,
 				63ED17C42A0D9942001DC422 /* Cells */,
 				63ED17BC2A0D792F001DC422 /* Models */,
 				63ED17A82A0D6E7F001DC422 /* AppDelegate.swift */,
 				63ED17AA2A0D6E7F001DC422 /* SceneDelegate.swift */,
-				63ED17AC2A0D6E7F001DC422 /* ListViewController.swift */,
-				63ED17C52A0EE45C001DC422 /* DetailViewController.swift */,
 				63ED17AE2A0D6E7F001DC422 /* Main.storyboard */,
 				63ED17B12A0D6E80001DC422 /* Assets.xcassets */,
 				63ED17B32A0D6E80001DC422 /* LaunchScreen.storyboard */,
@@ -91,8 +96,20 @@
 			children = (
 				63ED17C02A0D9939001DC422 /* NewsCell.swift */,
 				63ED17C12A0D9939001DC422 /* NewsCell.xib */,
+				63ED17E42A140131001DC422 /* FavoriteCell.swift */,
+				63ED17E52A140131001DC422 /* FavoriteCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		63ED17E12A13FC8D001DC422 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				63ED17AC2A0D6E7F001DC422 /* ListViewController.swift */,
+				63ED17C52A0EE45C001DC422 /* DetailViewController.swift */,
+				63ED17E22A13FF7B001DC422 /* FavoritesViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +174,7 @@
 				63ED17B22A0D6E80001DC422 /* Assets.xcassets in Resources */,
 				63ED17C32A0D9939001DC422 /* NewsCell.xib in Resources */,
 				63ED17B02A0D6E7F001DC422 /* Main.storyboard in Resources */,
+				63ED17E72A140131001DC422 /* FavoriteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,8 +187,10 @@
 			files = (
 				63ED17BF2A0D7973001DC422 /* Article.swift in Sources */,
 				63ED17AD2A0D6E7F001DC422 /* ListViewController.swift in Sources */,
+				63ED17E32A13FF7B001DC422 /* FavoritesViewController.swift in Sources */,
 				63ED17A92A0D6E7F001DC422 /* AppDelegate.swift in Sources */,
 				63ED17C62A0EE45C001DC422 /* DetailViewController.swift in Sources */,
+				63ED17E62A140131001DC422 /* FavoriteCell.swift in Sources */,
 				63ED17AB2A0D6E7F001DC422 /* SceneDelegate.swift in Sources */,
 				63ED17C22A0D9939001DC422 /* NewsCell.swift in Sources */,
 			);
